@@ -1,0 +1,6 @@
+acme_hello_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: AcmeHelloBundle:Hello:index }
+
+    pattern: /goodbye
+    defaults: { _controller: AcmeHelloBundle:Hello:goodbye }
