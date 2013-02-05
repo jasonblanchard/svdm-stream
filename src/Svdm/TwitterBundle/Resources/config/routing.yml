@@ -1,0 +1,3 @@
+svdm_twitter_homepage:
+    pattern:  /svdm/
+    defaults: { _controller: SvdmTwitterBundle:Default:index }
