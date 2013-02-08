@@ -14,11 +14,11 @@ class DefaultController extends Controller
 
       $timed_tweets = group_tweets($tweets);
 
-      print_r($timed_tweets);
+      $random = rand(0, count($tweets) - 1);
 
       return $this->render(
         'SvdmTwitterBundle:Default:index.html.twig',
-        array('tweet' => $tweets[0]->message, 'timestamp' => $tweets[0]->timestamp)
+        array('tweet' => $tweets[$random]->message, 'timestamp' => $tweets[$random]->timestamp)
       );
     }
 }
