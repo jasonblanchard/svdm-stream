@@ -12,6 +12,10 @@ class DefaultController extends Controller
 
       $tweets = make_twitter_objects($tweet_json);
 
+      $timed_tweets = group_tweets($tweets);
+
+      print_r($timed_tweets);
+
       return $this->render(
         'SvdmTwitterBundle:Default:index.html.twig',
         array('tweet' => $tweets[0]->message, 'timestamp' => $tweets[0]->timestamp)
@@ -56,3 +60,24 @@ function make_twitter_objects($json) {
 
   return $tweets;
 }
+
+function group_tweets($tweet_array) {
+  $now = time();
+  $newest = array();
+  $older = array();
+  $tweet_time_array = array();
+
+  foreach ($tweet_array as $tweet) {
+    if (($now - 60) < $tweet->timestamp) {
+      $newest[] = $tweet;
+    } else {
+      $older[] = $tweet;
+    }
+  }
+
+  $tweet_time_array["newest"] = $newest;
+  $tweet_time_array["older"] = $older;
+
+  return $tweet_time_array;
+}
+
