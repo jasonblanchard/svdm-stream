@@ -1,3 +1,7 @@
-svdm_twitter_homepage:
-    pattern:  /svdm/
-    defaults: { _controller: SvdmTwitterBundle:Default:index }
+svdm_twitter_return_tweet:
+    pattern:  /svdm/tweet
+    defaults: { _controller: SvdmTwitterBundle:Default:tweet }
+
+svdm_tweet_request_tweet:
+    pattern: /svdm/
+    defaults: { _controller: SvdmTwitterBundle:Default:request }

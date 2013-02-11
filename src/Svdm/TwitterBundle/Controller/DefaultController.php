@@ -9,7 +9,7 @@ require_once(dirname(__FILE__) . '/lib.php');
 
 class DefaultController extends Controller
 {
-    public function indexAction() {
+    public function tweetAction() {
 
       $request = $this->getRequest();
 
@@ -47,4 +47,11 @@ class DefaultController extends Controller
 
       */
     }
+
+    public function requestAction() {
+      return $this->render(
+        'SvdmTwitterBundle:Default:index.html.twig'
+      );
+    }
+
 }
