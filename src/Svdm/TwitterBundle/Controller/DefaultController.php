@@ -8,6 +8,10 @@ class DefaultController extends Controller
 {
     public function indexAction() {
 
+      $request = $this->getRequest();
+
+      $blacklist = array($request->query->get(1), $request->query->get(2), $request->query->get(3));
+
       #$tweet_json = get_tweet_json('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&screen_name=JasonTwenties');
 
       $tweet_json = get_tweet_json_from_cache();
@@ -18,10 +22,14 @@ class DefaultController extends Controller
 
       print_r($timed_tweets);
 
-      if (count($timed_tweets['newest']) != 0) {
-        $final_tweet = pick_tweet($timed_tweets['newest'], array(1234));
-      } else {
-        $final_tweet = pick_tweet($timed_tweets['older'], array(1234));
+      $final_tweet = false;
+
+      while ($final_tweet == false) {
+        if (count($timed_tweets['newest']) != 0) {
+          $final_tweet = pick_tweet($timed_tweets['newest'], $blacklist);
+        } else {
+          $final_tweet = pick_tweet($timed_tweets['older'], $blacklist);
+        }
       }
 
       return $this->render(
