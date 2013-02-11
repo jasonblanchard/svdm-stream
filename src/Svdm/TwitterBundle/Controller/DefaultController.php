@@ -3,6 +3,7 @@
 namespace Svdm\TwitterBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -20,7 +21,7 @@ class DefaultController extends Controller
 
       $timed_tweets = group_tweets($tweets);
 
-      print_r($timed_tweets);
+      #print_r($timed_tweets);
 
       $final_tweet = false;
 
@@ -32,10 +33,19 @@ class DefaultController extends Controller
         }
       }
 
+      $response = new Response(json_encode($final_tweet));
+      $response->headers->set('Content-Type', 'application/json');
+
+      return $response;
+
+      /*
+
       return $this->render(
         'SvdmTwitterBundle:Default:index.html.twig',
         array('tweet' => $final_tweet->message, 'timestamp' => $final_tweet->timestamp, 'media_url' => $final_tweet->media_url)
       );
+
+      */
     }
 }
 
