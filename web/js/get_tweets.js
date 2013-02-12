@@ -35,7 +35,7 @@ $(document).ready( function() {
     blacklist.pop();
     blacklist.unshift(tweet.tid);
 
-    requestURL = 'http://dev-site.vbox.local/symfony/web/app_dev.php/svdm/tweet?1=' + blacklist[0] + "&2=" + blacklist[1] + "&3=" + blacklist[2];
+    requestURL = initURL + "?1=" + blacklist[0] + "&2=" + blacklist[1] + "&3=" + blacklist[2];
   }
 });
 
