@@ -1,8 +1,15 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<?php include_javascripts('get_tweets.js'); ?>
 <script src="{{ asset("js/get_tweets.js") }}"></script>
+<link rel="stylesheet" type="text/css" href="{{ asset("css/style.css") }}"></script>
 
-<h1>The tweet goes here with some JS magic</h1>
-<div class="profile-pic"></div>
-<div class="tweet-message"></div>
-<div class="tweet-media"></div>
+<div class="wrapper">
+
+  <div class="tweet-wrapper">
+    <div class="full-tweet">
+      <div class="profile-pic"></div>
+      <div class="tweet-message"></div>
+  </div>
+  </div>
+  <div class="tweet-media"></div>
+
+</div>

@@ -1,2 +1,4 @@
 all:
   javascripts: [get_tweets.js]
+
+  stylesheets: [style.css]
