@@ -24,11 +24,13 @@ $(document).ready( function() {
 
   function insertTweet(tweet) {
 
+    var profilePic = tweet.profile_pic.replace('normal','bigger');
+
     $('.tweet-media').html('');
 
     $('.tweet-message').text(tweet.message);
 
-    $('.profile-pic').html("<img src='" + tweet.profile_pic + "'>");
+    $('.profile-pic').html("<img src='" + profilePic + "'>");
 
     if (tweet.media_url != "") {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
