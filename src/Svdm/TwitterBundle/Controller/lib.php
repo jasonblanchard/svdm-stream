@@ -42,7 +42,7 @@ function get_tweet_json($url) {
   fwrite($cache, $json);
 
   fclose($cache);
-  
+
   return json_decode($json, TRUE);
 }
 
@@ -50,9 +50,9 @@ function get_tweet_json_from_cache() {
   
   $filename = dirname(__FILE__) . "/tweet_cache.js";
 
-  $cache = fopen($filename, 'r+');
+  $cache_file = fopen($filename, 'r+');
 
-  $json = fread($cache, filesize($filename));
+  $json = fread($cache_file, filesize($filename));
 
   return json_decode($json, TRUE);
 }
