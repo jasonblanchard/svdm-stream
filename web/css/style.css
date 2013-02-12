@@ -10,16 +10,20 @@ body {
 }
 
 .tweet-wrapper {
-  background: rgb(224, 224, 224);
-  min-height: 100px;
-  border: 1px solid rgb(180, 180, 180);
-  border-radius: 3px;
 }
 
 .full-tweet {
   width: 80%;
   margin: 0 auto;
   padding: 10px;
+}
+
+.tweet-message {
+  float: left;
+}
+
+.tweet-username {
+  font-weight: bold;
 }
 
 .profile-pic {

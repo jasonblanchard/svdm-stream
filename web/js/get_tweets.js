@@ -31,6 +31,7 @@ $(document).ready( function() {
     $('.tweet-message').text(tweet.message);
 
     $('.profile-pic').html("<img src='" + profilePic + "'>");
+    $('.tweet-username').text("@" + tweet.username);
 
     if (tweet.media_url != "") {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
