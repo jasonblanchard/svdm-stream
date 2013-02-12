@@ -24,7 +24,8 @@ $(document).ready( function() {
 
   function insertTweet(tweet) {
 
-    console.log("Current tweet = " + tweet.tid);
+    console.log("Current tweet = " + tweet.tid + " at " + tweet.timestamp);
+    console.log("Cache = " + tweet.cached);
 
     var profilePic = tweet.profile_pic.replace('normal','bigger');
 
