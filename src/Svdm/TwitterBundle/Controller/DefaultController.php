@@ -33,8 +33,6 @@ class DefaultController extends Controller
         }
       }
 
-      $final_tweet->blacklist = $blacklist;
-
       $response = new Response(json_encode($final_tweet));
       $response->headers->set('Content-Type', 'application/json');
 

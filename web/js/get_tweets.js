@@ -7,7 +7,7 @@ $(document).ready( function() {
 
   get_tweet(initURL);
 
-  //setInterval(function() { get_tweet(requestURL)}, 1000);
+  setInterval(function() { get_tweet(requestURL)}, 5000);
 
   function get_tweet(url) {
     $.ajax({
@@ -32,7 +32,8 @@ $(document).ready( function() {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
     }
 
-    blacklist[0] = tweet.tid;
+    blacklist.pop();
+    blacklist.unshift(tweet.tid);
 
     requestURL = 'http://dev-site.vbox.local/symfony/web/app_dev.php/svdm/tweet?1=' + blacklist[0] + "&2=" + blacklist[1] + "&3=" + blacklist[2];
   }
