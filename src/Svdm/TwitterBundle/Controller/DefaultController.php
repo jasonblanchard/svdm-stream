@@ -15,7 +15,7 @@ class DefaultController extends Controller
 
       $blacklist = array($request->query->get(1), $request->query->get(2), $request->query->get(3));
 
-      $tweet_json = get_tweet_json('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&screen_name=JasonTwenties');
+      $tweet_json = get_tweet_json('http://search.twitter.com/search.json?q=%23svdm13%20OR%20%40prtyplnt&rpp=100&result_type=recent&include_entities=true');
 
       $cached = FALSE;
 

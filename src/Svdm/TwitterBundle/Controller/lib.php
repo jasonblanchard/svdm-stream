@@ -58,22 +58,24 @@ function make_twitter_objects($json) {
 
   $tweets = array();
 
-  foreach ($json as $tweet) {
-    $tid = $tweet['id_str'];
-    $message = $tweet['text'];
-    $timestamp = $tweet['created_at'];
+  foreach ($json['results'] as $tweet) {
+    if (isset($tweet['id_str'])) {
+      $tid = $tweet['id_str'];
+      $message = $tweet['text'];
+      $timestamp = $tweet['created_at'];
 
-    if (isset($tweet['entities']['media'])) {
-      $media_url = $tweet['entities']['media'][0]['media_url'];
-    } else {
-      $media_url = '';
+      if (isset($tweet['entities']['media'])) {
+        $media_url = $tweet['entities']['media'][0]['media_url'];
+      } else {
+        $media_url = '';
+      }
+
+      $profile_pic = $tweet['profile_image_url'];
+
+      $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url, $profile_pic);
+
+      $tweets[] = $tweet_obj;
     }
-
-    $profile_pic = $tweet['user']['profile_image_url'];
-
-    $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url, $profile_pic);
-
-    $tweets[] = $tweet_obj;
   }
 
   return $tweets;
