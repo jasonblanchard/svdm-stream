@@ -26,7 +26,9 @@ class TwitterMessage {
 
 function get_tweet_json($url) {
 
-  if (get_headers($url) != "HTTP/1.0 200 OK") {
+  $headers = get_headers($url);
+
+  if ($headers[0] != "HTTP/1.0 200 OK") {
     return FALSE;
   }
 
