@@ -24,6 +24,8 @@ $(document).ready( function() {
 
   function insertTweet(tweet) {
 
+    console.log("Current tweet = " + tweet.tid);
+
     var profilePic = tweet.profile_pic.replace('normal','bigger');
 
     $('.tweet-media').html('');
