@@ -12,6 +12,8 @@ class TwitterMessage {
 
   public $profile_pic = '';
 
+  public $cached = '';
+
   function __construct($tid, $message, $timestamp, $media_url, $profile_pic) {
     $this->tid = $tid;
     $this->message = $message;
@@ -23,6 +25,11 @@ class TwitterMessage {
 }
 
 function get_tweet_json($url) {
+
+  if (get_headers($url) != "HTTP/1.0 200 OK") {
+    return FALSE;
+  }
+
   $json = file_get_contents($url);
 
   $cache = fopen(dirname(__FILE__) . "/tweet_cache.js", 'r+');

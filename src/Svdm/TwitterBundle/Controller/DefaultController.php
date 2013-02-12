@@ -15,9 +15,14 @@ class DefaultController extends Controller
 
       $blacklist = array($request->query->get(1), $request->query->get(2), $request->query->get(3));
 
-      #$tweet_json = get_tweet_json('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&screen_name=JasonTwenties');
+      $tweet_json = get_tweet_json('https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&screen_name=JasonTwenties');
 
-      $tweet_json = get_tweet_json_from_cache();
+      $cached = FALSE;
+
+      if ($tweet_json == FALSE) {
+        $tweet_json = get_tweet_json_from_cache();
+        $cached = TRUE;
+      }
 
       $tweets = make_twitter_objects($tweet_json);
 
@@ -32,6 +37,8 @@ class DefaultController extends Controller
           $final_tweet = pick_tweet($timed_tweets['older'], $blacklist);
         }
       }
+
+      $final_tweet->cached = $cached;
 
       $response = new Response(json_encode($final_tweet));
       $response->headers->set('Content-Type', 'application/json');
