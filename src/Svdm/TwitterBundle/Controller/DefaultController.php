@@ -30,10 +30,13 @@ class DefaultController extends Controller
 
       $final_tweet = false;
 
-      while ($final_tweet == false) {
-        if (count($timed_tweets['newest']) != 0) {
-          $final_tweet = pick_tweet($timed_tweets['newest'], $blacklist);
-        } else {
+      if (count($timed_tweets['newest']) != 0) {
+        $final_tweet = pick_tweet($timed_tweets['newest'], $blacklist);
+      }
+
+      if ($final_tweet == false) {
+
+        while ($final_tweet == false) {
           $final_tweet = pick_tweet($timed_tweets['older'], $blacklist);
         }
       }
