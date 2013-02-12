@@ -1,9 +1,5 @@
 $(document).ready( function() {
 
-  var blacklist1 = '' || "asdf";
-  var blacklist2= '';
-  var blacklist3 = '';
-
   var requestURL = 'http://dev-site.vbox.local/symfony/web/app_dev.php/svdm/tweet?1=' + blacklist1 + "&2=" + blacklist2 + "&3=" + blacklist3;
 
   console.log(requestURL);
@@ -23,8 +19,6 @@ $(document).ready( function() {
     if (tweet.media_url != "") {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
     }
-
-    console.log(tweet.blacklist);
   }
 
 
