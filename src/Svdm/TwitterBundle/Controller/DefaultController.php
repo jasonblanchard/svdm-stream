@@ -33,6 +33,8 @@ class DefaultController extends Controller
         }
       }
 
+      $final_tweet->blacklist = $blacklist;
+
       $response = new Response(json_encode($final_tweet));
       $response->headers->set('Content-Type', 'application/json');
 
@@ -56,7 +58,7 @@ class DefaultController extends Controller
 
       return $this->render(
         'SvdmTwitterBundle:Default:index.html.twig',
-        array('blacklist1' => $blacklist[0])
+        array('blacklist1' => $blacklist[0], 'blacklist2' => $blacklist[1], 'blacklist3' => $blacklist[2])
       );
     }
 

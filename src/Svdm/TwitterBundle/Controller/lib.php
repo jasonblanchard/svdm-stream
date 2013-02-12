@@ -10,6 +10,8 @@ class TwitterMessage {
 
   public $media_url = '';
 
+  public $blacklist = '';
+
   function __construct($tid, $message, $timestamp, $media_url) {
     $this->tid = $tid;
     $this->message = $message;
