@@ -28,6 +28,8 @@ $(document).ready( function() {
 
     $('.tweet-message').text(tweet.message);
 
+    $('.profile-pic').html("<img src='" + tweet.profile_pic + "'>");
+
     if (tweet.media_url != "") {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
     }

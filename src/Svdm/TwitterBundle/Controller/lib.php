@@ -10,11 +10,14 @@ class TwitterMessage {
 
   public $media_url = '';
 
-  function __construct($tid, $message, $timestamp, $media_url) {
+  public $profile_pic = '';
+
+  function __construct($tid, $message, $timestamp, $media_url, $profile_pic) {
     $this->tid = $tid;
     $this->message = $message;
     $this->timestamp = $timestamp;
     $this->media_url = $media_url;
+    $this->profile_pic = $profile_pic;
   }
   
 }
@@ -57,7 +60,9 @@ function make_twitter_objects($json) {
       $media_url = '';
     }
 
-    $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url);
+    $profile_pic = $tweet['user']['profile_image_url'];
+
+    $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url, $profile_pic);
 
     $tweets[] = $tweet_obj;
   }
