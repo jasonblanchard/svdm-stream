@@ -60,13 +60,8 @@ class DefaultController extends Controller
 
     public function requestAction() {
 
-      $request = $this->getRequest();
-
-      $blacklist = array($request->query->get(1), $request->query->get(2), $request->query->get(3));
-
       return $this->render(
-        'SvdmTwitterBundle:Default:index.html.twig',
-        array('blacklist1' => $blacklist[0], 'blacklist2' => $blacklist[1], 'blacklist3' => $blacklist[2])
+        'SvdmTwitterBundle:Default:index.html.twig'
       );
     }
 

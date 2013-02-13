@@ -3,7 +3,7 @@ $(document).ready( function() {
   var blacklist = ['','','']
   var requestURL;
 
-  var initURL = 'http://dev-site.vbox.local/symfony/web/app_dev.php/svdm/tweet'
+  var initURL = "http://" + app_url + "/svdm/tweet";
 
   get_tweet(initURL);
 
