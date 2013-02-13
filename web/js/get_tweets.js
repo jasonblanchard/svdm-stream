@@ -7,7 +7,10 @@ $(document).ready( function() {
 
   get_tweet(initURL);
 
-  setInterval(function() { get_tweet(requestURL)}, 5000);
+  setInterval(function() { 
+    $('.tweet-wrapper').fadeOut('fast');
+    get_tweet(requestURL)}, 
+    10000);
 
   function get_tweet(url) {
     $.ajax({
@@ -27,6 +30,18 @@ $(document).ready( function() {
     console.log("Current tweet = " + tweet.tid + " at " + tweet.timestamp);
     console.log("Cache = " + tweet.cached);
 
+    processTweet(tweet);
+
+    $('.tweet-wrapper').fadeIn('fast');
+
+    blacklist.pop();
+    blacklist.unshift(tweet.tid);
+
+    requestURL = initURL + "?1=" + blacklist[0] + "&2=" + blacklist[1] + "&3=" + blacklist[2];
+  }
+
+  function processTweet(tweet) {
+
     var profilePic = tweet.profile_pic.replace('normal','bigger');
 
     $('.tweet-media').html('');
@@ -39,12 +54,8 @@ $(document).ready( function() {
     if (tweet.media_url != "") {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
     }
-
-    blacklist.pop();
-    blacklist.unshift(tweet.tid);
-
-    requestURL = initURL + "?1=" + blacklist[0] + "&2=" + blacklist[1] + "&3=" + blacklist[2];
   }
+
 });
 
 
