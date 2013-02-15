@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 
 require_once(dirname(__FILE__) . '/lib.php');
+require_once(dirname(__FILE__) . '/simple_html_dom.php');
 
 class DefaultController extends Controller
 {
@@ -42,16 +43,15 @@ class DefaultController extends Controller
       }
 
       $final_tweet->cached = $cached;
+      $final_tweet->instagram_image = '';
 
       if ($final_tweet->instagram != '') {
-        #$instagram_page = file_get_contents($final_tweet->instagram);
-        #var_dump($instagram_page);
+        $html = file_get_html($final_tweet->instagram);
 
-        $document = new DomDocument();
+        $image = $html->find('img.photo');
+        
+        $final_tweet->instagram_image = $image[0]->src;
 
-        $file = file_get_contents($final_tweet->instagram);
-
-        $document->loadHTMLFile($file);
       }
 
       $response = new Response(json_encode($final_tweet));

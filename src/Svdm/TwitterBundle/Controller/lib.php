@@ -18,6 +18,8 @@ class TwitterMessage {
 
   public $instagram = '';
 
+  public $instagram_image = '';
+
   function __construct($tid, $message, $timestamp, $media_url, $profile_pic, $username, $instagram) {
     $this->tid = $tid;
     $this->message = $message;

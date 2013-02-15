@@ -55,6 +55,10 @@ $(document).ready( function() {
       $('.tweet-media').html("<img src='" + tweet.media_url + "'>");
     }
 
+    if (tweet.instagram_image != "") {
+      $('.tweet-media').html("<img src='" + tweet.instagram_image + "'>");
+    }
+
   }
 
 });
