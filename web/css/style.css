@@ -2,6 +2,9 @@ body {
   font-family: 'Poiret One', cursive;
   font-size: 2em;
   background: rgb(34, 0, 0);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-image: url('./background.png');
 }
 
 .wrapper {
