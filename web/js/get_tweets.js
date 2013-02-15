@@ -8,7 +8,7 @@ $(document).ready( function() {
   get_tweet(initURL);
 
   setInterval(function() { 
-    $('.tweet-wrapper').fadeOut('fast');
+    $('.wrapper').fadeOut('fast');
     get_tweet(requestURL)}, 
     10000);
 
@@ -32,7 +32,7 @@ $(document).ready( function() {
 
     processTweet(tweet);
 
-    $('.tweet-wrapper').fadeIn('fast');
+    $('.wrapper').fadeIn('fast');
 
     blacklist.pop();
     blacklist.unshift(tweet.tid);
