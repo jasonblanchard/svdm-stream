@@ -7,10 +7,10 @@ $(document).ready( function() {
 
   get_tweet(initURL);
 
-  setInterval(function() { 
-    $('.wrapper').fadeOut('fast');
-    get_tweet(requestURL)}, 
-    10000);
+ // setInterval(function() { 
+ //   $('.wrapper').fadeOut('fast');
+ //   get_tweet(requestURL)}, 
+ //   10000);
 
   function get_tweet(url) {
     $.ajax({
