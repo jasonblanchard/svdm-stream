@@ -43,6 +43,17 @@ class DefaultController extends Controller
 
       $final_tweet->cached = $cached;
 
+      if ($final_tweet->instagram != '') {
+        #$instagram_page = file_get_contents($final_tweet->instagram);
+        #var_dump($instagram_page);
+
+        $document = new DomDocument();
+
+        $file = file_get_contents($final_tweet->instagram);
+
+        $document->loadHTMLFile($file);
+      }
+
       $response = new Response(json_encode($final_tweet));
       $response->headers->set('Content-Type', 'application/json');
 

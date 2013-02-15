@@ -16,16 +16,16 @@ class TwitterMessage {
 
   public $username = '';
 
-  public $urls = '';
+  public $instagram = '';
 
-  function __construct($tid, $message, $timestamp, $media_url, $profile_pic, $username, $urls) {
+  function __construct($tid, $message, $timestamp, $media_url, $profile_pic, $username, $instagram) {
     $this->tid = $tid;
     $this->message = $message;
     $this->timestamp = $timestamp;
     $this->media_url = $media_url;
     $this->profile_pic = $profile_pic;
     $this->username = $username;
-    $this->urls = $urls;
+    $this->instagram = $instagram;
   }
   
 }
@@ -79,13 +79,17 @@ function make_twitter_objects($json) {
       $profile_pic = $tweet['profile_image_url'];
       $username = $tweet['from_user'];
 
-      $urls = "";
+      $instagram = "";
 
       if (isset($tweet['entities']['urls'][0]['expanded_url'])) {
-        $urls = $tweet['entities']['urls'][0]['expanded_url'];
+        $url = $tweet['entities']['urls'][0]['expanded_url'];
+
+        if (strncmp("http://instagr.am", $url, 17) == 0) {
+          $instagram = substr_replace($url, 'www.', 7, 0);
+        }
       }
 
-      $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url, $profile_pic, $username, $urls);
+      $tweet_obj = new TwitterMessage($tid, $message, $timestamp, $media_url, $profile_pic, $username, $instagram);
 
       $tweets[] = $tweet_obj;
     }
