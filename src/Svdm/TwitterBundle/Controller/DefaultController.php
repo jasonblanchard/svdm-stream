@@ -8,6 +8,8 @@ use Symfony\Component\HttpFoundation\Response;
 require_once(dirname(__FILE__) . '/lib.php');
 require_once(dirname(__FILE__) . '/simple_html_dom.php');
 
+ini_set('user_agent', 'svdm.blanktech.net');
+
 class DefaultController extends Controller
 {
     public function tweetAction() {
